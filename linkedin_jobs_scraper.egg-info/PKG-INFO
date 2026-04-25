@@ -1,30 +1,40 @@
 Metadata-Version: 2.4
 Name: linkedin-jobs-scraper
 Version: 1.0.0
-Summary: LinkedIn Jobs Scraper - Extract job listings from LinkedIn
-Home-page: https://github.com/yourusername/linkedin-jobs-scraper
+Summary: A professional web scraping tool for extracting job listings from LinkedIn
+Home-page: https://github.com/ivanchencbx/linkedin-jobs-scraper
 Author: Ivan Chen
+Author-email: Ivan Chen <your.email@example.com>
+Maintainer-email: Ivan Chen <your.email@example.com>
+License: MIT
+Project-URL: Homepage, https://github.com/ivanchencbx/linkedin-jobs-scraper
+Project-URL: Bug Reports, https://github.com/ivanchencbx/linkedin-jobs-scraper/issues
+Project-URL: Documentation, https://github.com/ivanchencbx/linkedin-jobs-scraper
+Project-URL: Source, https://github.com/ivanchencbx/linkedin-jobs-scraper
+Keywords: linkedin,scraper,jobs,automation,selenium
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Internet :: WWW/HTTP :: Indexing/Search
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
 Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.8
 Classifier: Programming Language :: Python :: 3.9
 Classifier: Programming Language :: Python :: 3.10
 Classifier: Programming Language :: Python :: 3.11
-Classifier: License :: OSI Approved :: MIT License
-Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.12
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: selenium>=4.15.0
 Requires-Dist: pyyaml>=6.0
 Requires-Dist: python-dateutil>=2.8.2
 Requires-Dist: httpx>=0.25.0
 Dynamic: author
-Dynamic: classifier
-Dynamic: description
-Dynamic: description-content-type
 Dynamic: home-page
-Dynamic: requires-dist
+Dynamic: license-file
 Dynamic: requires-python
-Dynamic: summary
 
 # LinkedIn Jobs Scraper
 
@@ -40,10 +50,289 @@ A professional web scraping tool for extracting job listings from LinkedIn with 
 - 📝 **Comprehensive Logging**: Detailed logging for debugging
 - 🛠 **Command Line Interface**: Easy to use CLI
 
+## Project Structure
+
+``` text
+linkedin-jobs-scraper/
+├── linkedin_scraper/
+│   ├── __init__.py
+│   ├── auth/
+│   │   ├── __init__.py
+│   │   └── authenticator.py
+│   ├── scraper/
+│   │   ├── __init__.py
+│   │   └── job_scraper.py
+│   ├── storage/
+│   │   ├── __init__.py
+│   │   └── csv_manager.py
+│   └── utils/
+│       ├── __init__.py
+│       └── helpers.py
+├── config/
+│   └── config.yaml
+├── main.py
+├── setup.py
+├── README.md
+├── requirements.txt
+├── LICENSE
+└── MANIFEST.in (可选)
+```
+
 ## Installation
 
-### 1. Clone the repository
+### From PyPI (Recommended)
+
+```bash
+pip install linkedin-jobs-scraper
+```
+
+### From Source
 
 ```bash
 git clone https://github.com/yourusername/linkedin-jobs-scraper.git
 cd linkedin-jobs-scraper
+pip install -e .
+```
+
+## Requirements
+
+- Python 3.8+
+- Chrome browser
+- ChromeDriver (automatically managed by webdriver-manager)
+
+## Quick Start
+
+After installation, you can run the scraper directly:
+
+```bash
+linkedin-scraper
+```
+
+Or with options:
+
+```bash
+linkedin-scraper --max-pages 5 --visible
+```
+
+## Command Line Options
+
+| Option | Description |
+|---|---|
+| `-c`, `--config` | Path to configuration file (default: config/config.yaml) |
+| `-p`, `--max-pages` | Maximum number of pages to scrape (default: all pages) |
+| `--visible` | Run browser in visible mode (not headless) |
+| `--refresh-session` | Refresh session and update cookies without scraping |
+| `--stats` | Show statistics from CSV file |
+| `--clear-cookies` | Clear saved cookies and force new login |
+| `-v`, `--verbose` | Enable verbose logging |
+| `-h`, `--help` | Show help message |
+
+## Usage Examples
+
+### Basic Usage
+
+```bash
+# Run with default settings (will prompt for credentials on first run)
+linkedin-scraper
+
+# Scrape only first 10 pages
+linkedin-scraper --max-pages 10
+
+# Run with visible browser (useful for debugging)
+linkedin-scraper --visible
+
+# Use custom configuration file
+linkedin-scraper --config /path/to/custom-config.yaml
+```
+
+### Session Management
+
+```bash
+# Refresh session and update cookies
+linkedin-scraper --refresh-session
+
+# Clear saved cookies to force new login
+linkedin-scraper --clear-cookies
+```
+
+### Data Management
+
+```bash
+# Show statistics from the CSV file
+linkedin-scraper --stats
+
+# Enable verbose logging for debugging
+linkedin-scraper --verbose
+```
+
+## Configuration
+
+### First Run
+
+The first time you run the scraper, you'll be prompted for:
+
+- **LinkedIn email/username**: Your LinkedIn login email
+- **LinkedIn password**: Your LinkedIn password (input is hidden)
+- **LinkedIn display name**: Your full name as displayed on LinkedIn (case insensitive)
+
+The display name is automatically saved to `config/config.yaml` for future use, so you won't need to enter it again.
+
+### Configuration File
+
+After first run, you can edit `config/config.yaml` to customize:
+
+```yaml
+# Search filters
+search:
+  filters:
+    f_F: "it"                    # Function area
+    f_CR: "102890883"            # Country/region
+    f_E: "3,4,5,6"               # Experience level
+    f_JT: "F"                    # Job type (F=Full-time)
+    f_TPR: "2592000"             # Time range (30 days)
+    f_WT: "1"                    # Work type (1=On-site)
+  
+  keywords: '("System"OR"Software"OR"Engineer"...)AND("Health"OR"Healthcare"OR"Medical"...)'
+  sort_by: "R"                   # R=Recent, D=Date posted
+  results_per_page: 25
+
+# Browser settings
+browser:
+  headless: true                 # Run in background
+  window_width: 1920
+  window_height: 1080
+  page_load_timeout: 300
+
+# Wait times (adjust if experiencing timeouts)
+waits:
+  page_load: 300                 # Wait for page to load (seconds)
+  element_wait: 60              # Wait for elements to appear
+  verification_retry: 30        # Verification code retry interval
+  between_pages: 5              # Delay between pages
+```
+
+## Output
+
+The scraper generates `linkedin_jobs.csv` with the following columns:
+
+| Column | Description |
+|---|---|
+| `jobid` | Unique LinkedIn job ID |
+| `jobtitle` | Job title |
+| `company` | Company name |
+| `location` | Job location |
+| `url` | Direct link to job posting |
+| `updatedatetime` | Last update timestamp |
+
+### Sample Output
+
+```csv
+jobid,jobtitle,company,location,url,updatedatetime
+4404083753,IT Business Partner,GE HealthCare,"Shanghai, Shanghai, China",https://www.linkedin.com/jobs/view/4404083753,2024-06-01 10:21:48
+4404988581,Customer Program Manager-OMS,DHL Global Forwarding,"Chengdu, Sichuan, China",https://www.linkedin.com/jobs/view/4404988581,2024-06-01 10:42:44
+```
+
+## Authentication Flow
+
+The scraper uses a smart authentication system:
+
+1. **Cookie-based login**: Attempts to use saved cookies first (fastest)
+2. **Credential-based login**: If cookies fail, uses email/password
+3. **Manual intervention**: If automatic login fails, switches to visible browser for manual login
+4. **2FA support**: Automatically retrieves verification codes from Gmail (requires `gog` CLI tool)
+
+### 2FA Setup (Optional)
+
+For automatic 2FA code retrieval, install the `gog` CLI tool:
+
+```bash
+# Install gog (Gmail CLI tool)
+# Follow instructions at: https://github.com/genuinetools/gog
+```
+
+## Logging
+
+Logs are written to `scraper.log` with the following levels:
+
+- **INFO**: Normal operation messages
+- **DEBUG**: Detailed debugging information (with `--verbose`)
+- **WARNING**: Non-critical issues
+- **ERROR**: Critical failures
+
+## Troubleshooting
+
+### Common Issues
+
+| Issue | Solution |
+|---|---|
+| ChromeDriver not found | Install ChromeDriver or use webdriver-manager |
+| Authentication failed | Verify credentials and check 2FA setup |
+| Timeout errors | Increase wait times in `config.yaml` |
+| Empty search results | Check search filters and keywords |
+| Cookie login fails | Run with `--clear-cookies` to force new login |
+
+### Debug Mode
+
+For detailed debugging:
+
+```bash
+linkedin-scraper --verbose --visible
+```
+
+### Manual Login
+
+If automatic login keeps failing:
+
+```bash
+# Clear old cookies
+linkedin-scraper --clear-cookies
+
+# Run with visible browser
+linkedin-scraper --visible
+```
+
+Then complete login manually in the browser window.
+
+## Security
+
+- **Passwords**: Never stored, only used during authentication
+- **Cookies**: Stored locally for session management
+- **Credentials**: Only email and display name are saved (display name in config)
+- **2FA**: Verification codes are never stored
+
+## Best Practices
+
+- **Rate Limiting**: The scraper includes built-in delays to avoid being blocked
+- **Session Management**: Cookies are saved to avoid frequent logins
+- **Incremental Updates**: Uses upsert to avoid duplicate entries
+- **Error Recovery**: Automatic retry and fallback mechanisms
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Disclaimer
+
+This tool is for educational purposes only. Please respect LinkedIn's terms of service and robots.txt. Consider using LinkedIn's official API for production use. The authors are not responsible for any misuse of this tool.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Support
+
+- 📧 Email: <ivanchen99@gmail.com>
+- 🐛 Issue Tracker: <https://github.com/ivanchencbx/linkedin-jobs-scraper/issues>
+- 📖 Documentation: <https://github.com/ivanchencbx/linkedin-jobs-scraper>
+
+## Changelog
+
+### Version 1.0.0 (2026-04-25)
+
+- Initial release
+- Support for LinkedIn job search and scraping
+- Cookie-based authentication
+- CSV storage with upsert functionality
+- Command-line interface
+- Headless and visible browser modes
+- 2FA support

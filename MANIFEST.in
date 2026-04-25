@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+include requirements.txt
+include config/config.yaml
+recursive-include linkedin_scraper/config *.yaml

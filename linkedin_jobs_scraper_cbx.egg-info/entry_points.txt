@@ -1,0 +1,2 @@
+[console_scripts]
+linkedin-scraper = linkedin_scraper.cli:main

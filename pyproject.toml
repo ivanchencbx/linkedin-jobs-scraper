@@ -1,0 +1,57 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linkedin-jobs-scraper-cbx"
+version = "1.0.3"
+description = "A professional web scraping tool for extracting job listings from LinkedIn"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Ivan Chen", email = "ivanchen99@gmail.com"}
+]
+maintainers = [
+    {name = "Ivan Chen", email = "ivanchen99@gmail.com"}
+]
+keywords = ["linkedin", "scraper", "jobs", "automation", "selenium"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "selenium>=4.15.0",
+    "pyyaml>=6.0",
+    "python-dateutil>=2.8.2",
+    "httpx>=0.25.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ivanchencbx/linkedin-jobs-scraper"
+"Bug Reports" = "https://github.com/ivanchencbx/linkedin-jobs-scraper/issues"
+"Documentation" = "https://github.com/ivanchencbx/linkedin-jobs-scraper"
+"Source" = "https://github.com/ivanchencbx/linkedin-jobs-scraper"
+
+[project.scripts]
+#linkedin-scraper = "linkedin_scraper.__main__:main"  # 修改这里
+linkedin-scraper = "linkedin_scraper.cli:main"  # 或者指向 cli.py
+
+[tool.setuptools]
+packages = ["linkedin_scraper", "linkedin_scraper.auth", "linkedin_scraper.scraper", "linkedin_scraper.storage", "linkedin_scraper.utils"]
+
+[tool.setuptools.package-data]
+linkedin_scraper = ["config/*.yaml"]

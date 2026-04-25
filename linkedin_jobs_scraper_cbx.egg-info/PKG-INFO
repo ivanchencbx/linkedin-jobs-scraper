@@ -1,3 +1,41 @@
+Metadata-Version: 2.4
+Name: linkedin-jobs-scraper-cbx
+Version: 1.0.2
+Summary: A professional web scraping tool for extracting job listings from LinkedIn
+Home-page: https://github.com/ivanchencbx/linkedin-jobs-scraper
+Author: Ivan Chen
+Author-email: Ivan Chen <ivanchen99@gmail.com>
+Maintainer-email: Ivan Chen <ivanchen99@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/ivanchencbx/linkedin-jobs-scraper
+Project-URL: Bug Reports, https://github.com/ivanchencbx/linkedin-jobs-scraper/issues
+Project-URL: Documentation, https://github.com/ivanchencbx/linkedin-jobs-scraper
+Project-URL: Source, https://github.com/ivanchencbx/linkedin-jobs-scraper
+Keywords: linkedin,scraper,jobs,automation,selenium
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Internet :: WWW/HTTP :: Indexing/Search
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: selenium>=4.15.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: python-dateutil>=2.8.2
+Requires-Dist: httpx>=0.25.0
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
 # LinkedIn Jobs Scraper
 
 A professional web scraping tool for extracting job listings from LinkedIn with support for authentication, pagination, and CSV storage.
