@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linkedin-jobs-scraper-cbx"
-version = "1.0.3"
+version = "1.0.6"
 description = "A professional web scraping tool for extracting job listings from LinkedIn"
 readme = "README.md"
 license = {text = "MIT"}

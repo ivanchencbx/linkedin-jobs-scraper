@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: linkedin-jobs-scraper-cbx
-Version: 1.0.2
+Version: 1.0.6
 Summary: A professional web scraping tool for extracting job listings from LinkedIn
 Home-page: https://github.com/ivanchencbx/linkedin-jobs-scraper
 Author: Ivan Chen
@@ -50,34 +50,6 @@ A professional web scraping tool for extracting job listings from LinkedIn with 
 - 📝 **Comprehensive Logging**: Detailed logging for debugging
 - 🛠 **Command Line Interface**: Easy to use CLI
 
-## Project Structure
-
-``` text
-linkedin-jobs-scraper/
-├── linkedin_scraper/
-│   ├── __init__.py
-│   ├── auth/
-│   │   ├── __init__.py
-│   │   └── authenticator.py
-│   ├── scraper/
-│   │   ├── __init__.py
-│   │   └── job_scraper.py
-│   ├── storage/
-│   │   ├── __init__.py
-│   │   └── csv_manager.py
-│   └── utils/
-│       ├── __init__.py
-│       └── helpers.py
-├── config/
-│   └── config.yaml
-├── main.py
-├── setup.py
-├── README.md
-├── requirements.txt
-├── LICENSE
-└── MANIFEST.in (可选)
-```
-
 ## Installation
 
 ### From PyPI (Recommended)
@@ -113,11 +85,25 @@ Or with options:
 ```bash
 linkedin-scraper --max-pages 5 --visible
 ```
+Or Conduct a precise search
+
+```bash
+# 搜索中国大陆的高级Java开发工程师（最近7天，远程工作）
+linkedin-scraper `
+  --country 103890883 `
+  --experience 5,6 `
+  --function it `
+  --job-type F `
+  --time-range 604800 `
+  --work-type 2 `
+  --keywords '("Java"OR"Spring")AND("Senior"OR"Lead")AND("Developer")' `
+  --sort-by R
+```
 
 ## Command Line Options
 
 | Option | Description |
-|---|---|
+| --- | --- |
 | `-c`, `--config` | Path to configuration file (default: config/config.yaml) |
 | `-p`, `--max-pages` | Maximum number of pages to scrape (default: all pages) |
 | `--visible` | Run browser in visible mode (not headless) |
@@ -126,6 +112,19 @@ linkedin-scraper --max-pages 5 --visible
 | `--clear-cookies` | Clear saved cookies and force new login |
 | `-v`, `--verbose` | Enable verbose logging |
 | `-h`, `--help` | Show help message |
+
+More options:
+
+| 命令行参数 | 配置文件字段 | 说明 | 示例值 |
+| --- | --- | --- | --- |
+| `--country` 或 `--f-cr` | `f_CR` | 国家/地区ID | `102890883` (中国), `103890883` (中国大陆) |
+| `--experience` 或 `--f-e` | `f_E` | 经验级别（逗号分隔） | `3,4,5,6` (3=入门,4=助理,5=高级,6=总监) |
+| `--function` 或 `--f-f` | `f_F` | 职能领域 | `it`, `sales`, `marketing`, `engineering` |
+| `--job-type` 或 `--f-jt` | `f_JT` | 职位类型 | `F`=全职, `C`=合同, `P`=兼职, `T`=临时, `I`=实习 |
+| `--time-range` 或 `--f-tpr` | `f_TPR` | 时间范围（秒） | `604800`=7天, `2592000`=30天, `7776000`=90天 |
+| `--work-type` 或 `--f-wt` | `f_WT` | 工作类型 | `1`=现场, `2`=远程, `3`=混合 |
+| `--keywords` 或 `-k` | `keywords` | 搜索关键词 | `'("Python"OR"Java")AND("Developer")'` |
+| `--sort-by` | `sort_by` | 排序方式 | `R`=最近, `D`=发布日期 |
 
 ## Usage Examples
 
@@ -211,12 +210,59 @@ waits:
   between_pages: 5              # Delay between pages
 ```
 
+## Project Structure
+
+``` text
+linkedin-jobs-scraper/
+│
+├── linkedin_scraper/                    # 主包目录
+│   ├── __init__.py                      # 包初始化文件
+│   ├── cli.py                           # CLI 入口点（命令行工具）
+│   │
+│   ├── auth/                            # 认证模块
+│   │   ├── __init__.py
+│   │   └── authenticator.py             # LinkedIn 认证处理
+│   │
+│   ├── scraper/                         # 爬取模块
+│   │   ├── __init__.py
+│   │   └── job_scraper.py               # 职位爬取逻辑
+│   │
+│   ├── storage/                         # 存储模块
+│   │   ├── __init__.py
+│   │   └── csv_manager.py               # CSV 文件操作
+│   │
+│   └── utils/                           # 工具模块
+│       ├── __init__.py
+│       └── helpers.py                   # 辅助函数（配置、日志等）
+│
+├── config/                              # 配置文件目录
+│   └── config.yaml                      # 主配置文件
+│
+│
+├── setup.py                             # PyPI 安装配置
+├── pyproject.toml                       # 现代 Python 项目配置
+├── requirements.txt                     # 依赖列表
+├── README.md                            # 项目说明文档
+├── LICENSE                              # MIT 许可证
+├── MANIFEST.in                          # 打包包含的非 Python 文件
+│
+├── cookies.json                         # 保存的 cookies（运行时生成，不提交）
+├── linkedin_jobs.csv                    # 爬取的职位数据（运行时生成，不提交）
+├── scraper.log                          # 日志文件（运行时生成，不提交）
+│
+├── .gitignore                           # Git 忽略文件
+├── .pypirc                              # PyPI 认证配置（本地，不提交）
+│
+└── publish.sh                           # 发布脚本（可选）
+
+```
+
 ## Output
 
 The scraper generates `linkedin_jobs.csv` with the following columns:
 
 | Column | Description |
-|---|---|
+| --- | --- |
 | `jobid` | Unique LinkedIn job ID |
 | `jobtitle` | Job title |
 | `company` | Company name |
@@ -264,7 +310,7 @@ Logs are written to `scraper.log` with the following levels:
 ### Common Issues
 
 | Issue | Solution |
-|---|---|
+| --- | --- |
 | ChromeDriver not found | Install ChromeDriver or use webdriver-manager |
 | Authentication failed | Verify credentials and check 2FA setup |
 | Timeout errors | Increase wait times in `config.yaml` |
@@ -327,7 +373,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Changelog
 
-### Version 1.0.0 (2026-04-25)
+### Version 1.0.5 (2026-04-26)
 
 - Initial release
 - Support for LinkedIn job search and scraping

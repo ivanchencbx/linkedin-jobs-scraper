@@ -15,7 +15,7 @@ with open("requirements.txt", "r", encoding="utf-8") as f:
 
 setup(
     name="linkedin-jobs-scraper-cbx",
-    version="1.0.2",
+    version="1.0.5",
     author="Ivan Chen",
     author_email="ivanchen99@gmail.com",
     description="A professional web scraping tool for extracting job listings from LinkedIn",
