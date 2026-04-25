@@ -17,5 +17,5 @@ A professional web scraping tool for extracting job listings from LinkedIn with 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ivanchencbx/linkedin-jobs-scraper
+git clone https://github.com/yourusername/linkedin-jobs-scraper.git
 cd linkedin-jobs-scraper

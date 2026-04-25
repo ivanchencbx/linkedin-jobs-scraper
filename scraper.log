@@ -1,0 +1,569 @@
+2026-04-25 14:03:28,764 - __main__ - INFO - Starting LinkedIn Jobs Scraper
+2026-04-25 14:03:40,737 - selenium.webdriver.common.selenium_manager - WARNING - Error sending stats to Plausible: error sending request for url (https://plausible.io/api/event)
+2026-04-25 14:03:48,382 - linkedin_scraper.auth.authenticator - INFO - Proceeding with credential-based login
+2026-04-25 14:04:21,800 - linkedin_scraper.auth.authenticator - ERROR - Failed to login with credentials: Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb77cb7]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:04:21,805 - linkedin_scraper.auth.authenticator - ERROR - Authentication failed: Failed to submit login credentials
+2026-04-25 14:04:23,939 - linkedin_scraper.scraper.job_scraper - ERROR - Scraping failed: Failed to submit login credentials
+2026-04-25 14:04:23,941 - __main__ - ERROR - Fatal error: Failed to submit login credentials
+Traceback (most recent call last):
+  File "D:\DeskTop\Projects\linkedin-jobs-scraper\main.py", line 185, in main
+    stats = scraper.scrape_jobs(max_pages=args.max_pages)
+  File "D:\DeskTop\Projects\linkedin-jobs-scraper\linkedin_scraper\scraper\job_scraper.py", line 169, in scrape_jobs
+    self.driver = self.authenticator.authenticate()
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\DeskTop\Projects\linkedin-jobs-scraper\linkedin_scraper\auth\authenticator.py", line 263, in authenticate
+    raise Exception("Failed to submit login credentials")
+Exception: Failed to submit login credentials
+2026-04-25 14:05:04,807 - __main__ - INFO - Starting LinkedIn Jobs Scraper
+2026-04-25 14:05:09,270 - linkedin_scraper.auth.authenticator - INFO - Proceeding with credential-based login
+2026-04-25 14:05:22,847 - linkedin_scraper.auth.authenticator - INFO - Submitted login credentials
+2026-04-25 14:05:43,610 - linkedin_scraper.auth.authenticator - INFO - No verification code required
+2026-04-25 14:05:43,693 - linkedin_scraper.auth.authenticator - INFO - Already logged in via cookies
+2026-04-25 14:05:43,701 - linkedin_scraper.auth.authenticator - INFO - Saved 15 cookies to cookies.json
+2026-04-25 14:05:43,701 - linkedin_scraper.auth.authenticator - INFO - Login completed successfully
+2026-04-25 14:05:43,701 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to search URL: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=0
+2026-04-25 14:06:22,719 - linkedin_scraper.scraper.job_scraper - INFO - Waiting 300 seconds for page to load...
+2026-04-25 14:11:22,762 - linkedin_scraper.scraper.job_scraper - INFO - Total jobs found: 178
+2026-04-25 14:11:22,762 - linkedin_scraper.scraper.job_scraper - INFO - Scraping 8 pages...
+2026-04-25 14:11:22,772 - linkedin_scraper.scraper.job_scraper - INFO - Found 25 jobs on current page
+2026-04-25 14:11:33,430 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:11:43,435 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:11:53,494 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:12:03,545 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:12:13,630 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:12:23,667 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:12:33,724 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:12:43,788 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:12:53,802 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:13:03,837 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:13:13,906 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:13:23,969 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:13:34,040 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:13:44,058 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:13:54,072 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:14:04,132 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:14:14,161 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:14:24,222 - linkedin_scraper.scraper.job_scraper - WARNING - Failed to extract individual job: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//div/div"}
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd6ed]
+	chromedriver!(No symbol) [0x7ff70fb26cfe]
+	chromedriver!(No symbol) [0x7ff70fb2700c]
+	chromedriver!(No symbol) [0x7ff70fb1ab9c]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 14:14:24,223 - linkedin_scraper.storage.csv_manager - INFO - Created new CSV file: linkedin_jobs.csv
+2026-04-25 14:14:24,224 - linkedin_scraper.storage.csv_manager - INFO - Saved 7 jobs to linkedin_jobs.csv
+2026-04-25 14:14:24,224 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +7 added, 0 updated
+2026-04-25 14:14:24,224 - linkedin_scraper.scraper.job_scraper - INFO - Page 1: +7 new, 0 updated
+2026-04-25 14:14:29,232 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 2: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=25
+2026-04-25 14:14:40,484 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:14:40,906 - linkedin_scraper.storage.csv_manager - INFO - Saved 14 jobs to linkedin_jobs.csv
+2026-04-25 14:14:40,906 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +7 added, 0 updated
+2026-04-25 14:14:40,906 - linkedin_scraper.scraper.job_scraper - INFO - Page 2: +7 new, 0 updated
+2026-04-25 14:14:45,907 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 3: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=50
+2026-04-25 14:14:58,464 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:14:58,885 - linkedin_scraper.storage.csv_manager - INFO - Saved 21 jobs to linkedin_jobs.csv
+2026-04-25 14:14:58,885 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +7 added, 0 updated
+2026-04-25 14:14:58,885 - linkedin_scraper.scraper.job_scraper - INFO - Page 3: +7 new, 0 updated
+2026-04-25 14:15:03,885 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 4: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=75
+2026-04-25 14:15:14,607 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:15:15,043 - linkedin_scraper.storage.csv_manager - INFO - Saved 28 jobs to linkedin_jobs.csv
+2026-04-25 14:15:15,043 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +7 added, 0 updated
+2026-04-25 14:15:15,043 - linkedin_scraper.scraper.job_scraper - INFO - Page 4: +7 new, 0 updated
+2026-04-25 14:15:20,044 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 5: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=100
+2026-04-25 14:15:32,934 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:15:33,354 - linkedin_scraper.storage.csv_manager - INFO - Saved 35 jobs to linkedin_jobs.csv
+2026-04-25 14:15:33,354 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +7 added, 0 updated
+2026-04-25 14:15:33,355 - linkedin_scraper.scraper.job_scraper - INFO - Page 5: +7 new, 0 updated
+2026-04-25 14:15:38,355 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 6: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=125
+2026-04-25 14:15:49,229 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:15:49,659 - linkedin_scraper.storage.csv_manager - INFO - Saved 42 jobs to linkedin_jobs.csv
+2026-04-25 14:15:49,659 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +7 added, 0 updated
+2026-04-25 14:15:49,660 - linkedin_scraper.scraper.job_scraper - INFO - Page 6: +7 new, 0 updated
+2026-04-25 14:15:54,660 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 7: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=150
+2026-04-25 14:16:04,875 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:16:05,410 - linkedin_scraper.storage.csv_manager - INFO - Saved 49 jobs to linkedin_jobs.csv
+2026-04-25 14:16:05,410 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +7 added, 0 updated
+2026-04-25 14:16:05,410 - linkedin_scraper.scraper.job_scraper - INFO - Page 7: +7 new, 0 updated
+2026-04-25 14:16:10,411 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 8: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=175
+2026-04-25 14:17:37,172 - linkedin_scraper.scraper.job_scraper - WARNING - Timeout waiting for job elements to load
+2026-04-25 14:17:37,173 - linkedin_scraper.scraper.job_scraper - WARNING - No jobs extracted from page 8
+2026-04-25 14:17:39,312 - linkedin_scraper.scraper.job_scraper - INFO - WebDriver closed
+2026-04-25 14:17:39,313 - linkedin_scraper.scraper.job_scraper - INFO - Scraping completed: {'total_jobs_found': 178, 'jobs_added': 49, 'jobs_updated': 0, 'pages_scraped': 8, 'errors': 1}
+2026-04-25 14:17:39,313 - __main__ - INFO - Scraping completed successfully
+2026-04-25 14:21:42,368 - __main__ - INFO - Starting LinkedIn Jobs Scraper
+2026-04-25 14:21:46,850 - linkedin_scraper.auth.authenticator - INFO - Loaded 15 cookies from cookies.json
+2026-04-25 14:21:55,187 - linkedin_scraper.auth.authenticator - INFO - Already logged in via cookies
+2026-04-25 14:21:55,222 - linkedin_scraper.auth.authenticator - INFO - Saved 16 cookies to cookies.json
+2026-04-25 14:21:55,222 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to search URL: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=0
+2026-04-25 14:23:05,463 - linkedin_scraper.scraper.job_scraper - INFO - Waiting 300 seconds for page to load...
+2026-04-25 14:28:05,506 - linkedin_scraper.scraper.job_scraper - INFO - Total jobs found: 178
+2026-04-25 14:28:05,507 - linkedin_scraper.scraper.job_scraper - INFO - Scraping 8 pages...
+2026-04-25 14:28:05,516 - linkedin_scraper.scraper.job_scraper - INFO - Found 25 jobs on current page
+2026-04-25 14:28:07,023 - linkedin_scraper.storage.csv_manager - INFO - Saved 67 jobs to linkedin_jobs.csv
+2026-04-25 14:28:07,023 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +18 added, 7 updated
+2026-04-25 14:28:07,023 - linkedin_scraper.scraper.job_scraper - INFO - Page 1: +18 new, 7 updated
+2026-04-25 14:28:12,024 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 2: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=25
+2026-04-25 14:28:22,165 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:28:22,561 - linkedin_scraper.storage.csv_manager - INFO - Saved 68 jobs to linkedin_jobs.csv
+2026-04-25 14:28:22,561 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +1 added, 6 updated
+2026-04-25 14:28:22,561 - linkedin_scraper.scraper.job_scraper - INFO - Page 2: +1 new, 6 updated
+2026-04-25 14:28:27,562 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 3: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=50
+2026-04-25 14:28:56,830 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:28:57,288 - linkedin_scraper.storage.csv_manager - INFO - Saved 70 jobs to linkedin_jobs.csv
+2026-04-25 14:28:57,288 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +2 added, 5 updated
+2026-04-25 14:28:57,288 - linkedin_scraper.scraper.job_scraper - INFO - Page 3: +2 new, 5 updated
+2026-04-25 14:29:02,289 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 4: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=75
+2026-04-25 14:29:30,016 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:29:30,425 - linkedin_scraper.storage.csv_manager - INFO - Saved 73 jobs to linkedin_jobs.csv
+2026-04-25 14:29:30,426 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +3 added, 4 updated
+2026-04-25 14:29:30,426 - linkedin_scraper.scraper.job_scraper - INFO - Page 4: +3 new, 4 updated
+2026-04-25 14:29:35,426 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 5: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=100
+2026-04-25 14:30:05,270 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:30:05,881 - linkedin_scraper.storage.csv_manager - INFO - Saved 75 jobs to linkedin_jobs.csv
+2026-04-25 14:30:05,881 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +2 added, 5 updated
+2026-04-25 14:30:05,881 - linkedin_scraper.scraper.job_scraper - INFO - Page 5: +2 new, 5 updated
+2026-04-25 14:30:10,881 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 6: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=125
+2026-04-25 14:30:40,265 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:30:40,940 - linkedin_scraper.storage.csv_manager - INFO - Saved 80 jobs to linkedin_jobs.csv
+2026-04-25 14:30:40,940 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +5 added, 2 updated
+2026-04-25 14:30:40,940 - linkedin_scraper.scraper.job_scraper - INFO - Page 6: +5 new, 2 updated
+2026-04-25 14:30:45,941 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 7: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=150
+2026-04-25 14:30:58,462 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on current page
+2026-04-25 14:30:58,860 - linkedin_scraper.storage.csv_manager - INFO - Saved 86 jobs to linkedin_jobs.csv
+2026-04-25 14:30:58,860 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +6 added, 1 updated
+2026-04-25 14:30:58,860 - linkedin_scraper.scraper.job_scraper - INFO - Page 7: +6 new, 1 updated
+2026-04-25 14:31:03,860 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 8: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=175
+2026-04-25 14:32:25,488 - linkedin_scraper.scraper.job_scraper - WARNING - Timeout waiting for job elements to load
+2026-04-25 14:32:25,488 - linkedin_scraper.scraper.job_scraper - WARNING - No jobs extracted from page 8
+2026-04-25 14:32:27,615 - linkedin_scraper.scraper.job_scraper - INFO - WebDriver closed
+2026-04-25 14:32:27,616 - linkedin_scraper.scraper.job_scraper - INFO - Scraping completed: {'total_jobs_found': 178, 'jobs_added': 37, 'jobs_updated': 30, 'pages_scraped': 8, 'errors': 1}
+2026-04-25 14:32:27,616 - __main__ - INFO - Scraping completed successfully
