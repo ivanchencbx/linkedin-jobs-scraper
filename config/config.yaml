@@ -22,8 +22,8 @@ search:
 # 浏览器配置
 browser:
   headless: true
-  window_width: 1920
-  window_height: 1080
+  window_width: 19200
+  window_height: 10800
   page_load_timeout: 300        # 页面加载超时(秒)
   implicit_wait: 10             # 隐式等待时间(秒)
 

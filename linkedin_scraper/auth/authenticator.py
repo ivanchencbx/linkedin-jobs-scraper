@@ -50,8 +50,8 @@ class LinkedInAuthenticator:
             options.add_argument('--headless=new')
         options.add_argument('--disable-gpu')
         options.add_argument('--force-device-scale-factor=0.1') # 关键：缩放页面以适应不同分辨率    
-        #options.add_argument('--window-size=19200,10800')     # 设置窗口大小（某些网站需要）
-        options.add_argument(f'--window-size={self.browser_config.get("window_width", 19200)},{self.browser_config.get("window_height", 10800)}')
+        options.add_argument('--window-size=19200,10800')     # 设置窗口大小（某些网站需要）
+        #options.add_argument(f'--window-size={self.browser_config.get("window_width", 19200)},{self.browser_config.get("window_height", 10800)}')
         options.add_argument('--incognito')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
