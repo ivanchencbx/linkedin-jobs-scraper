@@ -1207,3 +1207,46 @@ Exception: Failed to submit login credentials
 2026-04-25 17:35:19,485 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to search URL: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=0
 2026-04-25 17:35:32,534 - linkedin_scraper.scraper.job_scraper - WARNING - Scraping interrupted by user
 2026-04-25 17:35:34,562 - __main__ - WARNING - Program interrupted by user
+2026-04-25 17:36:13,338 - __main__ - INFO - Starting LinkedIn Jobs Scraper
+2026-04-25 17:38:13,020 - linkedin_scraper.auth.authenticator - ERROR - Failed to login with credentials: Message: element not interactable
+  (Session info: chrome=147.0.7727.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70fd5a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff70fd5a950+14eb0]
+	chromedriver!(No symbol) [0x7ff70facd4d6]
+	chromedriver!(No symbol) [0x7ff70fb1d6a2]
+	chromedriver!(No symbol) [0x7ff70fb5002a]
+	chromedriver!(No symbol) [0x7ff70fb1aa46]
+	chromedriver!(No symbol) [0x7ff70fb7483b]
+	chromedriver!(No symbol) [0x7ff70fb190e8]
+	chromedriver!(No symbol) [0x7ff70fb19fc3]
+	chromedriver!GetHandleVerifier [0x7ff710070149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff71006a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff71008c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff70fd77cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff70fd8087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff70fd640e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff70fd64296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff70fd48737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffea4a9257d+1d]
+	ntdll!RtlUserThreadStart [0x7ffea576af08+28]
+
+2026-04-25 17:38:13,020 - linkedin_scraper.auth.authenticator - WARNING - Headless credential login failed: Failed to submit login credentials
+2026-04-25 17:44:10,628 - linkedin_scraper.auth.authenticator - INFO - Logged in as: Ivan Chen
+2026-04-25 17:44:10,636 - linkedin_scraper.auth.authenticator - INFO - Saved 19 cookies to cookies.json
+2026-04-25 17:44:10,643 - linkedin_scraper.auth.authenticator - INFO - Saved 19 cookies to cookies.json
+2026-04-25 17:44:47,702 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to search URL: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=0
+2026-04-25 17:45:23,776 - linkedin_scraper.scraper.job_scraper - INFO - Waiting 300 seconds for page to load...
+2026-04-25 17:50:23,816 - linkedin_scraper.scraper.job_scraper - INFO - Total jobs found: 178
+2026-04-25 17:50:23,826 - linkedin_scraper.scraper.job_scraper - INFO - Found 25 jobs on page 1
+2026-04-25 17:50:25,294 - linkedin_scraper.storage.csv_manager - INFO - Saved 138 jobs to linkedin_jobs.csv
+2026-04-25 17:50:25,294 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +1 added, 24 updated
+2026-04-25 17:50:30,295 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 2: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=25
+2026-04-25 17:50:42,122 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on page 2
+2026-04-25 17:50:42,736 - linkedin_scraper.storage.csv_manager - INFO - Saved 139 jobs to linkedin_jobs.csv
+2026-04-25 17:50:42,736 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +1 added, 6 updated
+2026-04-25 17:50:47,737 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 3: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=50
+2026-04-25 17:50:56,184 - linkedin_scraper.scraper.job_scraper - INFO - Found 7 jobs on page 3
+2026-04-25 17:50:56,606 - linkedin_scraper.storage.csv_manager - INFO - Saved 139 jobs to linkedin_jobs.csv
+2026-04-25 17:50:56,606 - linkedin_scraper.storage.csv_manager - INFO - Batch upsert complete: +0 added, 7 updated
+2026-04-25 17:51:01,607 - linkedin_scraper.scraper.job_scraper - INFO - Navigating to page 4: https://www.linkedin.com/jobs/search/?f_F=it&f_CR=102890883&f_E=3%2C4%2C5%2C6&f_JT=F&f_TPR=2592000&f_WT=1&geoId=92000000&keywords=%28%22System%22OR%22Systems%22OR%22Software%22OR%22Engineer%22OR%22Digital%22OR%22Partner%22OR%22Product+Manager%22OR%22Owner%22OR%22HEAD%22OR%22Lead%22OR%22Leader%22OR%22Director%22OR%22Manager%22OR%22Application%22OR%22CIO%22OR%22AI%22OR%22Artificial+Intelligence%22OR%22Solution%22%29AND%28%22Health%22OR%22Healthcare%22OR%22Medical%22OR%22Medical+care%22OR%22Life+Science%22OR%22MedTech%22OR%22Devices%22OR%22Business%22OR%22HCP%22OR%22Customer%22OR%22Consumer%22OR%22Veeva%22OR%22Salesforce%22OR%22SFDC%22OR%22R%2526D%22OR%22Tech%22%29&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true&sortBy=R&start=75
