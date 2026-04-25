@@ -14,7 +14,7 @@ setup(
     description="LinkedIn Jobs Scraper - Extract job listings from LinkedIn",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ivanchencbx/linkedin-jobs-scraper",
+    url="https://github.com/yourusername/linkedin-jobs-scraper",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

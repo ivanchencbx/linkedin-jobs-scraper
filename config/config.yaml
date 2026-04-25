@@ -1,8 +1,6 @@
-# LinkedIn 配置
+# LinkedIn 配置 (敏感信息将通过命令行手动输入)
 linkedin:
-  email: "ivanchen99@gmail.com"
-  password: "Ivan3573"
-  username_display: "Ivan Chen"  # 用于验证登录成功的显示名称
+  username_display: ""  # 将通过手动输入获取，用于验证登录成功
 
 # 搜索配置
 search:

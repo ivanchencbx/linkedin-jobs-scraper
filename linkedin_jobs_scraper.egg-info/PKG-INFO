@@ -2,7 +2,7 @@ Metadata-Version: 2.4
 Name: linkedin-jobs-scraper
 Version: 1.0.0
 Summary: LinkedIn Jobs Scraper - Extract job listings from LinkedIn
-Home-page: https://github.com/ivanchencbx/linkedin-jobs-scraper
+Home-page: https://github.com/yourusername/linkedin-jobs-scraper
 Author: Ivan Chen
 Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.8

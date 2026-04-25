@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from linkedin_scraper.auth.authenticator import LinkedInAuthenticator
 from linkedin_scraper.scraper.job_scraper import JobScraper
+from linkedin_scraper.storage.csv_manager import JobCSVManager
 from linkedin_scraper.utils.helpers import load_config, setup_logging
 
 logger = logging.getLogger(__name__)
@@ -26,7 +27,7 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Run with default config
+  # Run with default config (will prompt for credentials)
   python main.py
   
   # Scrape only 5 pages
@@ -35,11 +36,17 @@ Examples:
   # Use custom config file
   python main.py --config /path/to/config.yaml
   
+  # Run without headless mode (visible browser)
+  python main.py --visible
+  
   # Refresh session only (validate and update cookies)
   python main.py --refresh-session
   
   # Show CSV stats
   python main.py --stats
+  
+  # Clear saved cookies (force new login)
+  python main.py --clear-cookies
         """
     )
     
@@ -57,6 +64,12 @@ Examples:
     )
     
     parser.add_argument(
+        '--visible',
+        action='store_true',
+        help='Run browser in visible mode (not headless)'
+    )
+    
+    parser.add_argument(
         '--refresh-session',
         action='store_true',
         help='Refresh session and update cookies without scraping'
@@ -69,6 +82,12 @@ Examples:
     )
     
     parser.add_argument(
+        '--clear-cookies',
+        action='store_true',
+        help='Clear saved cookies and force new login'
+    )
+    
+    parser.add_argument(
         '-v', '--verbose',
         action='store_true',
         help='Enable verbose logging'
@@ -77,10 +96,18 @@ Examples:
     return parser.parse_args()
 
 
+def clear_cookies():
+    """Clear saved cookies file"""
+    cookie_file = Path('cookies.json')
+    if cookie_file.exists():
+        cookie_file.unlink()
+        print("✓ Cookies cleared successfully")
+    else:
+        print("ℹ️ No cookies file found")
+
+
 def show_stats(config):
     """Display CSV statistics"""
-    from linkedin_scraper.storage.csv_manager import JobCSVManager
-    
     storage_config = config.get('storage', {})
     filename = storage_config.get('filename', 'linkedin_jobs.csv')
     
@@ -103,25 +130,29 @@ def show_stats(config):
             companies[company] = companies.get(company, 0) + 1
             locations[location] = locations.get(location, 0) + 1
         
-        print(f"\nTop 10 companies by job count:")
+        print(f"\n📊 Top 10 companies by job count:")
         for company, count in sorted(companies.items(), key=lambda x: x[1], reverse=True)[:10]:
             print(f"  {company}: {count}")
         
-        print(f"\nTop 10 locations:")
+        print(f"\n📍 Top 10 locations:")
         for location, count in sorted(locations.items(), key=lambda x: x[1], reverse=True)[:10]:
             print(f"  {location}: {count}")
         
         # Date range
         dates = [job.get('updatedatetime', '') for job in jobs if job.get('updatedatetime')]
         if dates:
-            print(f"\nLast updated: {max(dates)}")
+            print(f"\n🕒 Last updated: {max(dates)}")
     
     print("="*60 + "\n")
 
 
-def refresh_session(config):
+def refresh_session(config, visible=False):
     """Refresh LinkedIn session"""
-    print("Refreshing LinkedIn session...")
+    print("🔄 Refreshing LinkedIn session...")
+    
+    # Temporarily override headless setting
+    if visible:
+        config['browser']['headless'] = False
     
     authenticator = LinkedInAuthenticator(config)
     driver = None
@@ -148,9 +179,19 @@ def main():
     """Main entry point"""
     args = parse_arguments()
     
+    # Handle clear cookies command (doesn't need config)
+    if args.clear_cookies:
+        clear_cookies()
+        return 0
+    
     try:
         # Load configuration
         config = load_config(args.config)
+        
+        # Override headless mode if visible flag is set
+        if args.visible:
+            config['browser']['headless'] = False
+            print("ℹ️ Running in visible browser mode")
         
         # Setup logging
         if args.verbose:
@@ -166,7 +207,7 @@ def main():
         
         # Handle session refresh command
         if args.refresh_session:
-            success = refresh_session(config)
+            success = refresh_session(config, args.visible)
             return 0 if success else 1
         
         # Run scraper
@@ -176,7 +217,11 @@ def main():
         print(f"Config: {args.config}")
         if args.max_pages:
             print(f"Max pages: {args.max_pages}")
-        print("="*60 + "\n")
+        if args.visible:
+            print("Mode: Visible browser")
+        else:
+            print("Mode: Headless (background)")
+        print("="*60)
         
         authenticator = LinkedInAuthenticator(config)
         scraper = JobScraper(config, authenticator)
@@ -188,19 +233,23 @@ def main():
         print("\n" + "="*60)
         print("SCRAPING RESULTS")
         print("="*60)
-        print(f"Total jobs found: {stats['total_jobs_found']}")
-        print(f"Jobs added: {stats['jobs_added']}")
-        print(f"Jobs updated: {stats['jobs_updated']}")
-        print(f"Pages scraped: {stats['pages_scraped']}")
-        print(f"Errors: {stats['errors']}")
+        print(f"📊 Total jobs found: {stats['total_jobs_found']}")
+        print(f"✅ Jobs added: {stats['jobs_added']}")
+        print(f"🔄 Jobs updated: {stats['jobs_updated']}")
+        print(f"📄 Pages scraped: {stats['pages_scraped']}")
+        print(f"⚠️ Errors: {stats['errors']}")
+        
+        if stats['jobs_added'] > 0 or stats['jobs_updated'] > 0:
+            print(f"\n💾 Data saved to: {config.get('storage', {}).get('filename', 'linkedin_jobs.csv')}")
+        
         print("="*60 + "\n")
         
         logger.info("Scraping completed successfully")
         return 0
         
     except KeyboardInterrupt:
-        print("\n\n⚠️  Scraping interrupted by user")
-        logger.warning("Scraping interrupted by user")
+        print("\n\n⚠️ Program interrupted by user")
+        logger.warning("Program interrupted by user")
         return 1
     except Exception as e:
         print(f"\n❌ Error: {e}")
