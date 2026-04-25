@@ -17,6 +17,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import subprocess
 
+from linkedin_scraper.utils.helpers import save_display_name_to_config
+
 logger = logging.getLogger(__name__)
 
 
@@ -38,9 +40,15 @@ class LinkedInAuthenticator:
         self.browser_config = config.get('browser', {})
         self.wait_config = config.get('waits', {})
         
+        # Load saved display name from config if exists
+        saved_display_name = config.get('linkedin', {}).get('username_display', '')
+        if saved_display_name:
+            self.username_display = saved_display_name
+            logger.info(f"Loaded display name from config: {self.username_display}")
+        
     def _get_credentials_from_user(self) -> Tuple[str, str, str]:
         """
-        Prompt user for LinkedIn credentials
+        Prompt user for LinkedIn credentials (only when needed)
         
         Returns:
             Tuple of (email, password, display_name)
@@ -49,25 +57,34 @@ class LinkedInAuthenticator:
         print("LINKEDIN LOGIN REQUIRED")
         print("="*60)
         
-        # Get email
+        # Get email (always required for credential login)
         email = input("Enter LinkedIn email/username: ").strip()
         while not email:
             print("Email cannot be empty!")
             email = input("Enter LinkedIn email/username: ").strip()
         
-        # Get password (hidden input)
+        # Get password (always required for credential login)
         password = getpass.getpass("Enter LinkedIn password: ").strip()
         while not password:
             print("Password cannot be empty!")
             password = getpass.getpass("Enter LinkedIn password: ").strip()
         
-        # Get display name for verification
-        print("\n⚠️  For login verification, please enter your full name as displayed on LinkedIn")
-        print("   (This will be used to verify successful login, case insensitive)")
-        display_name = input("Enter your LinkedIn display name: ").strip()
-        while not display_name:
-            print("Display name cannot be empty!")
+        # Only ask for display name if not already saved in config
+        if not self.username_display:
+            print("\n⚠️  For login verification, please enter your full name as displayed on LinkedIn")
+            print("   (This will be used to verify successful login, case insensitive)")
             display_name = input("Enter your LinkedIn display name: ").strip()
+            while not display_name:
+                print("Display name cannot be empty!")
+                display_name = input("Enter your LinkedIn display name: ").strip()
+            
+            # Save display name to config for future use
+            save_display_name_to_config(display_name)
+            self.username_display = display_name
+            print(f"✓ Display name saved to config for future use")
+        else:
+            display_name = self.username_display
+            print(f"\n✓ Using saved display name: {display_name}")
         
         print("="*60 + "\n")
         
@@ -184,10 +201,6 @@ class LinkedInAuthenticator:
         for cookie in cookies:
             if 'expiry' in cookie:
                 cookie['expiry'] = int(cookie['expiry'])
-            # Remove domain attribute if it's causing issues
-            if 'domain' in cookie and cookie['domain'].startswith('.'):
-                # Keep domain as is, LinkedIn requires it
-                pass
             try:
                 driver.add_cookie(cookie)
             except Exception as e:
@@ -215,8 +228,6 @@ class LinkedInAuthenticator:
                 "//*[contains(@class, 'me-profile')]//span",
                 "//img[@alt]"
             ]
-            
-            wait = WebDriverWait(driver, 10)
             
             for pattern in xpath_patterns:
                 try:
@@ -479,13 +490,9 @@ class LinkedInAuthenticator:
         Returns:
             Authenticated WebDriver instance
         """
-        # Get credentials from user
-        self.email, self.password, self.username_display = self._get_credentials_from_user()
-        
-        # First try headless mode with cookies
+        # Try cookie-based login first (no credentials needed)
         driver = None
         try:
-            # Try cookie-based login first (headless)
             print("🔐 Attempting cookie-based login...")
             driver = self._create_driver(headless=True)
             driver.get("https://www.linkedin.com")
@@ -493,7 +500,6 @@ class LinkedInAuthenticator:
             
             cookies = self._load_cookies()
             if cookies:
-                logger.info("Attempting cookie-based login...")
                 self._add_cookies_to_driver(driver, cookies)
                 driver.refresh()
                 time.sleep(3)
@@ -517,9 +523,14 @@ class LinkedInAuthenticator:
                 driver.quit()
                 driver = None
         
+        # Credential-based login required - get credentials from user
+        print("\n⚠️ Cookie-based login failed or no saved cookies found")
+        print("Proceeding with credential-based login...")
+        self.email, self.password, _ = self._get_credentials_from_user()
+        
         # Try credential-based login in headless mode
         try:
-            print("🔐 Attempting credential-based login...")
+            print("🔐 Attempting credential-based login in headless mode...")
             driver = self._create_driver(headless=True)
             driver.get("https://www.linkedin.com")
             time.sleep(2)
@@ -537,7 +548,7 @@ class LinkedInAuthenticator:
             # Verify login success
             if self._is_logged_in(driver):
                 self._save_cookies(driver)
-                logger.info("✓ Login completed successfully")
+                logger.info("✓ Credential-based login completed successfully")
                 print("✓ Successfully logged into LinkedIn!")
                 return driver
             else:
@@ -550,7 +561,7 @@ class LinkedInAuthenticator:
                 driver = None
             
             # Switch to visible mode for manual intervention
-            print("\n⚠️ Automatic login failed. Switching to manual mode...")
+            print("\n⚠️ Headless login failed. Switching to visible mode for manual login...")
             return self._authenticate_manual()
     
     def _authenticate_manual(self) -> webdriver.Chrome:
@@ -584,61 +595,64 @@ class LinkedInAuthenticator:
                     return driver
             
             # Fill in credentials automatically (to save user effort)
-            print("Filling in credentials automatically...")
-            try:
-                # Find and fill email
-                email_selectors = [
-                    (By.ID, "username"),
-                    (By.CSS_SELECTOR, "input[name='session_key']"),
-                    (By.XPATH, "//input[@type='text' or @type='email']")
-                ]
-                
-                for selector_type, selector_value in email_selectors:
-                    try:
-                        email_input = WebDriverWait(driver, 5).until(
-                            EC.presence_of_element_located((selector_type, selector_value))
-                        )
-                        email_input.clear()
-                        email_input.send_keys(self.email)
-                        break
-                    except:
-                        continue
-                
-                # Find and fill password
-                password_selectors = [
-                    (By.ID, "password"),
-                    (By.CSS_SELECTOR, "input[name='session_password']"),
-                    (By.XPATH, "//input[@type='password']")
-                ]
-                
-                for selector_type, selector_value in password_selectors:
-                    try:
-                        password_input = driver.find_element(selector_type, selector_value)
-                        password_input.clear()
-                        password_input.send_keys(self.password)
-                        break
-                    except:
-                        continue
-                
-                # Try to click sign in button automatically
-                sign_in_selectors = [
-                    (By.XPATH, "//button[@type='submit']"),
-                    (By.XPATH, "//button[contains(@class, 'sign-in')]"),
-                    (By.CSS_SELECTOR, "button[type='submit']")
-                ]
-                
-                for selector_type, selector_value in sign_in_selectors:
-                    try:
-                        sign_in_button = driver.find_element(selector_type, selector_value)
-                        sign_in_button.click()
-                        print("Submitted credentials automatically")
-                        break
-                    except:
-                        continue
-                        
-            except Exception as e:
-                logger.debug(f"Auto-fill failed: {e}")
-                print("Please enter credentials manually in the browser.")
+            if self.email and self.password:
+                print("Filling in credentials automatically...")
+                try:
+                    # Find and fill email
+                    email_selectors = [
+                        (By.ID, "username"),
+                        (By.CSS_SELECTOR, "input[name='session_key']"),
+                        (By.XPATH, "//input[@type='text' or @type='email']")
+                    ]
+                    
+                    for selector_type, selector_value in email_selectors:
+                        try:
+                            email_input = WebDriverWait(driver, 5).until(
+                                EC.presence_of_element_located((selector_type, selector_value))
+                            )
+                            email_input.clear()
+                            email_input.send_keys(self.email)
+                            break
+                        except:
+                            continue
+                    
+                    # Find and fill password
+                    password_selectors = [
+                        (By.ID, "password"),
+                        (By.CSS_SELECTOR, "input[name='session_password']"),
+                        (By.XPATH, "//input[@type='password']")
+                    ]
+                    
+                    for selector_type, selector_value in password_selectors:
+                        try:
+                            password_input = driver.find_element(selector_type, selector_value)
+                            password_input.clear()
+                            password_input.send_keys(self.password)
+                            break
+                        except:
+                            continue
+                    
+                    # Try to click sign in button automatically
+                    sign_in_selectors = [
+                        (By.XPATH, "//button[@type='submit']"),
+                        (By.XPATH, "//button[contains(@class, 'sign-in')]"),
+                        (By.CSS_SELECTOR, "button[type='submit']")
+                    ]
+                    
+                    for selector_type, selector_value in sign_in_selectors:
+                        try:
+                            sign_in_button = driver.find_element(selector_type, selector_value)
+                            sign_in_button.click()
+                            print("Submitted credentials automatically")
+                            break
+                        except:
+                            continue
+                            
+                except Exception as e:
+                    logger.debug(f"Auto-fill failed: {e}")
+                    print("Please enter credentials manually in the browser.")
+            else:
+                print("Please enter your credentials manually in the browser.")
             
             # Manual intervention for completing login
             success = self._manual_login_intervention(driver)
@@ -731,3 +745,5 @@ class LinkedInAuthenticator:
             self.password = password
         if display_name:
             self.username_display = display_name
+            # Save to config
+            save_display_name_to_config(display_name)

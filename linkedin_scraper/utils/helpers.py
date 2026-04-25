@@ -50,3 +50,41 @@ def load_config(config_path: str = 'config/config.yaml') -> Dict[str, Any]:
         config = yaml.safe_load(f)
     
     return config
+
+
+def save_config(config: Dict[str, Any], config_path: str = 'config/config.yaml') -> None:
+    """
+    Save configuration to YAML file
+    
+    Args:
+        config: Configuration dictionary
+        config_path: Path to configuration file
+    """
+    config_file = Path(config_path)
+    
+    # Ensure directory exists
+    config_file.parent.mkdir(parents=True, exist_ok=True)
+    
+    with open(config_file, 'w', encoding='utf-8') as f:
+        yaml.dump(config, f, allow_unicode=True, default_flow_style=False)
+    
+    logging.getLogger(__name__).info(f"Configuration saved to {config_path}")
+
+
+def save_display_name_to_config(display_name: str, config_path: str = 'config/config.yaml') -> None:
+    """
+    Save display name to configuration file
+    
+    Args:
+        display_name: LinkedIn display name
+        config_path: Path to configuration file
+    """
+    config = load_config(config_path)
+    
+    if 'linkedin' not in config:
+        config['linkedin'] = {}
+    
+    config['linkedin']['username_display'] = display_name
+    
+    save_config(config, config_path)
+    logging.getLogger(__name__).info(f"Saved display_name to config: {display_name}")
